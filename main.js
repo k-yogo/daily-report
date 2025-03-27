@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
 import { fetchHistoryData } from './my-modules/fetch-history-data.js';
-import { submitData } from './my-modules/submit-data.js';
+import { submitData, focusNameField } from './my-modules/submit-data.js';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,4 +27,6 @@ if (document.getElementById('js-history')) {
 // Cloud Firestoreにデータを送信する
 if (document.getElementById('js-form')) {
   document.getElementById('js-form').addEventListener('submit', e => submitData(e, addDoc, collection, db));
+  // ページ読み込み時にnameフィールドにフォーカスする
+  focusNameField();
 }

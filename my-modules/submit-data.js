@@ -34,6 +34,12 @@ export const submitData = async (e, addDoc, collection, db) => {
     // フォームをリセットする
     e.target.reset();
 
+    // nameフィールドにフォーカスを設定
+    const nameInput = e.target.querySelector('[name="name"]');
+    if (nameInput) {
+      nameInput.focus();
+    }
+
     // 送信成功メッセージを表示
     showToastMessage('送信しました');
   } catch (e) {
@@ -41,6 +47,15 @@ export const submitData = async (e, addDoc, collection, db) => {
 
     // エラーメッセージを表示（オプション）
     showToastMessage('エラーが発生しました', true);
+  }
+};
+
+// ページ読み込み時にnameフィールドにフォーカスする関数
+export const focusNameField = () => {
+  // nameフィールドを取得してフォーカス
+  const nameInput = document.querySelector('form [name="name"]');
+  if (nameInput) {
+    nameInput.focus();
   }
 };
 
